@@ -83,7 +83,7 @@ async function execute(message, serverQueue) {
 
         try {
             // Here we try to join the voice chat and save our connection into our object
-            let connecttion = await voiceChannel.join();
+            let connection = await voiceChannel.join();
             queueContract.connection = connection;
 
             // Calling the play function to start a song
@@ -129,7 +129,7 @@ function play(guild, song) {
         return;
     }
 
-    const dispatcher = serverQueue.conenction.playStream(ytdl(song.url))
+    const dispatcher = serverQueue.connection.playStream(ytdl(song.url))
     .on('end', () => {
         console.log('Music ended!');
         serverQueue.songs.shift();
